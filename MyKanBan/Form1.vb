@@ -11,6 +11,6 @@
 End Class
 Public Class Card
     Private Sub createCard(ByVal title As String, ByVal description As String, ByVal dueDate As DateTime, ByVal urgency As Integer)
-        ' Code to create a new card with the provided title, description, and due date
+        ' Subprogram to create a new card with the provided title, description, and due date + urgency
     End Sub
 End Class
