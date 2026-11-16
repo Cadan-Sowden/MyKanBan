@@ -23,6 +23,10 @@ Partial Class frmMain
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grpCardCreate = New System.Windows.Forms.GroupBox()
+        Me.lblInfoCardUrgency = New System.Windows.Forms.Label()
+        Me.lblInfoCardDescription = New System.Windows.Forms.Label()
+        Me.lblInfoCardDueDate = New System.Windows.Forms.Label()
+        Me.lblInfoCardName = New System.Windows.Forms.Label()
         Me.btnCreateCardSubmit = New System.Windows.Forms.Button()
         Me.grpCardCreationUrgency = New System.Windows.Forms.GroupBox()
         Me.rbtUrgency3 = New System.Windows.Forms.RadioButton()
@@ -33,10 +37,6 @@ Partial Class frmMain
         Me.txtCardContent = New System.Windows.Forms.TextBox()
         Me.txtCardTitle = New System.Windows.Forms.TextBox()
         Me.lblTitleCardCreation = New System.Windows.Forms.Label()
-        Me.lblInfoCardName = New System.Windows.Forms.Label()
-        Me.lblInfoCardDueDate = New System.Windows.Forms.Label()
-        Me.lblInfoCardDescription = New System.Windows.Forms.Label()
-        Me.lblInfoCardUrgency = New System.Windows.Forms.Label()
         Me.grpNotices = New System.Windows.Forms.GroupBox()
         Me.grpToDo = New System.Windows.Forms.GroupBox()
         Me.grpInProgress = New System.Windows.Forms.GroupBox()
@@ -66,6 +66,50 @@ Partial Class frmMain
         Me.grpCardCreate.Size = New System.Drawing.Size(325, 744)
         Me.grpCardCreate.TabIndex = 0
         Me.grpCardCreate.TabStop = False
+        '
+        'lblInfoCardUrgency
+        '
+        Me.lblInfoCardUrgency.AutoSize = True
+        Me.lblInfoCardUrgency.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoCardUrgency.ForeColor = System.Drawing.Color.Azure
+        Me.lblInfoCardUrgency.Location = New System.Drawing.Point(42, 486)
+        Me.lblInfoCardUrgency.Name = "lblInfoCardUrgency"
+        Me.lblInfoCardUrgency.Size = New System.Drawing.Size(133, 25)
+        Me.lblInfoCardUrgency.TabIndex = 8
+        Me.lblInfoCardUrgency.Text = "Card Urgency"
+        '
+        'lblInfoCardDescription
+        '
+        Me.lblInfoCardDescription.AutoSize = True
+        Me.lblInfoCardDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoCardDescription.ForeColor = System.Drawing.Color.Azure
+        Me.lblInfoCardDescription.Location = New System.Drawing.Point(41, 232)
+        Me.lblInfoCardDescription.Name = "lblInfoCardDescription"
+        Me.lblInfoCardDescription.Size = New System.Drawing.Size(109, 25)
+        Me.lblInfoCardDescription.TabIndex = 8
+        Me.lblInfoCardDescription.Text = "Description"
+        '
+        'lblInfoCardDueDate
+        '
+        Me.lblInfoCardDueDate.AutoSize = True
+        Me.lblInfoCardDueDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoCardDueDate.ForeColor = System.Drawing.Color.Azure
+        Me.lblInfoCardDueDate.Location = New System.Drawing.Point(42, 164)
+        Me.lblInfoCardDueDate.Name = "lblInfoCardDueDate"
+        Me.lblInfoCardDueDate.Size = New System.Drawing.Size(100, 25)
+        Me.lblInfoCardDueDate.TabIndex = 8
+        Me.lblInfoCardDueDate.Text = "Due Date:"
+        '
+        'lblInfoCardName
+        '
+        Me.lblInfoCardName.AutoSize = True
+        Me.lblInfoCardName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoCardName.ForeColor = System.Drawing.Color.Azure
+        Me.lblInfoCardName.Location = New System.Drawing.Point(41, 94)
+        Me.lblInfoCardName.Name = "lblInfoCardName"
+        Me.lblInfoCardName.Size = New System.Drawing.Size(97, 25)
+        Me.lblInfoCardName.TabIndex = 7
+        Me.lblInfoCardName.Text = "Card Title"
         '
         'btnCreateCardSubmit
         '
@@ -175,50 +219,6 @@ Partial Class frmMain
         Me.lblTitleCardCreation.Size = New System.Drawing.Size(257, 37)
         Me.lblTitleCardCreation.TabIndex = 0
         Me.lblTitleCardCreation.Text = "Create New Card"
-        '
-        'lblInfoCardName
-        '
-        Me.lblInfoCardName.AutoSize = True
-        Me.lblInfoCardName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblInfoCardName.ForeColor = System.Drawing.Color.Azure
-        Me.lblInfoCardName.Location = New System.Drawing.Point(41, 94)
-        Me.lblInfoCardName.Name = "lblInfoCardName"
-        Me.lblInfoCardName.Size = New System.Drawing.Size(97, 25)
-        Me.lblInfoCardName.TabIndex = 7
-        Me.lblInfoCardName.Text = "Card Title"
-        '
-        'lblInfoCardDueDate
-        '
-        Me.lblInfoCardDueDate.AutoSize = True
-        Me.lblInfoCardDueDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblInfoCardDueDate.ForeColor = System.Drawing.Color.Azure
-        Me.lblInfoCardDueDate.Location = New System.Drawing.Point(42, 164)
-        Me.lblInfoCardDueDate.Name = "lblInfoCardDueDate"
-        Me.lblInfoCardDueDate.Size = New System.Drawing.Size(100, 25)
-        Me.lblInfoCardDueDate.TabIndex = 8
-        Me.lblInfoCardDueDate.Text = "Due Date:"
-        '
-        'lblInfoCardDescription
-        '
-        Me.lblInfoCardDescription.AutoSize = True
-        Me.lblInfoCardDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblInfoCardDescription.ForeColor = System.Drawing.Color.Azure
-        Me.lblInfoCardDescription.Location = New System.Drawing.Point(41, 232)
-        Me.lblInfoCardDescription.Name = "lblInfoCardDescription"
-        Me.lblInfoCardDescription.Size = New System.Drawing.Size(109, 25)
-        Me.lblInfoCardDescription.TabIndex = 8
-        Me.lblInfoCardDescription.Text = "Description"
-        '
-        'lblInfoCardUrgency
-        '
-        Me.lblInfoCardUrgency.AutoSize = True
-        Me.lblInfoCardUrgency.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblInfoCardUrgency.ForeColor = System.Drawing.Color.Azure
-        Me.lblInfoCardUrgency.Location = New System.Drawing.Point(42, 486)
-        Me.lblInfoCardUrgency.Name = "lblInfoCardUrgency"
-        Me.lblInfoCardUrgency.Size = New System.Drawing.Size(133, 25)
-        Me.lblInfoCardUrgency.TabIndex = 8
-        Me.lblInfoCardUrgency.Text = "Card Urgency"
         '
         'grpNotices
         '

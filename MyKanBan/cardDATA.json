@@ -1,1 +1,4 @@
-"comment": "UNDER DEVELOPMENT: Currently planning on using JSON to store card data, however may migrate to DB at some point. Morso innitialisation of file"
+{
+  "comment": "UNDER DEVELOPMENT: Currently planning on using JSON to store card data, however may migrate to DB at some point. Morso innitialisation of file"
+}
+
