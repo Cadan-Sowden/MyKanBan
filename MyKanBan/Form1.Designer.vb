@@ -33,12 +33,28 @@ Partial Class frmMain
         Me.txtCardContent = New System.Windows.Forms.TextBox()
         Me.txtCardTitle = New System.Windows.Forms.TextBox()
         Me.lblTitleCardCreation = New System.Windows.Forms.Label()
+        Me.lblInfoCardName = New System.Windows.Forms.Label()
+        Me.lblInfoCardDueDate = New System.Windows.Forms.Label()
+        Me.lblInfoCardDescription = New System.Windows.Forms.Label()
+        Me.lblInfoCardUrgency = New System.Windows.Forms.Label()
+        Me.grpNotices = New System.Windows.Forms.GroupBox()
+        Me.grpToDo = New System.Windows.Forms.GroupBox()
+        Me.grpInProgress = New System.Windows.Forms.GroupBox()
+        Me.grpDone = New System.Windows.Forms.GroupBox()
+        Me.lblInfoNotices = New System.Windows.Forms.Label()
+        Me.lblInfoToDo = New System.Windows.Forms.Label()
+        Me.lblInfoInProgress = New System.Windows.Forms.Label()
+        Me.lblInfoDone = New System.Windows.Forms.Label()
         Me.grpCardCreate.SuspendLayout()
         Me.grpCardCreationUrgency.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpCardCreate
         '
+        Me.grpCardCreate.Controls.Add(Me.lblInfoCardUrgency)
+        Me.grpCardCreate.Controls.Add(Me.lblInfoCardDescription)
+        Me.grpCardCreate.Controls.Add(Me.lblInfoCardDueDate)
+        Me.grpCardCreate.Controls.Add(Me.lblInfoCardName)
         Me.grpCardCreate.Controls.Add(Me.btnCreateCardSubmit)
         Me.grpCardCreate.Controls.Add(Me.grpCardCreationUrgency)
         Me.grpCardCreate.Controls.Add(Me.dtpCardDueDate)
@@ -125,7 +141,7 @@ Partial Class frmMain
         'dtpCardDueDate
         '
         Me.dtpCardDueDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpCardDueDate.Location = New System.Drawing.Point(66, 185)
+        Me.dtpCardDueDate.Location = New System.Drawing.Point(66, 189)
         Me.dtpCardDueDate.Name = "dtpCardDueDate"
         Me.dtpCardDueDate.Size = New System.Drawing.Size(200, 30)
         Me.dtpCardDueDate.TabIndex = 4
@@ -134,7 +150,7 @@ Partial Class frmMain
         '
         Me.txtCardContent.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.txtCardContent.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCardContent.Location = New System.Drawing.Point(40, 244)
+        Me.txtCardContent.Location = New System.Drawing.Point(39, 258)
         Me.txtCardContent.Multiline = True
         Me.txtCardContent.Name = "txtCardContent"
         Me.txtCardContent.Size = New System.Drawing.Size(250, 225)
@@ -144,7 +160,7 @@ Partial Class frmMain
         '
         Me.txtCardTitle.BackColor = System.Drawing.SystemColors.WindowFrame
         Me.txtCardTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCardTitle.Location = New System.Drawing.Point(39, 127)
+        Me.txtCardTitle.Location = New System.Drawing.Point(39, 122)
         Me.txtCardTitle.Name = "txtCardTitle"
         Me.txtCardTitle.Size = New System.Drawing.Size(250, 30)
         Me.txtCardTitle.TabIndex = 1
@@ -160,12 +176,140 @@ Partial Class frmMain
         Me.lblTitleCardCreation.TabIndex = 0
         Me.lblTitleCardCreation.Text = "Create New Card"
         '
+        'lblInfoCardName
+        '
+        Me.lblInfoCardName.AutoSize = True
+        Me.lblInfoCardName.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoCardName.ForeColor = System.Drawing.Color.Azure
+        Me.lblInfoCardName.Location = New System.Drawing.Point(41, 94)
+        Me.lblInfoCardName.Name = "lblInfoCardName"
+        Me.lblInfoCardName.Size = New System.Drawing.Size(97, 25)
+        Me.lblInfoCardName.TabIndex = 7
+        Me.lblInfoCardName.Text = "Card Title"
+        '
+        'lblInfoCardDueDate
+        '
+        Me.lblInfoCardDueDate.AutoSize = True
+        Me.lblInfoCardDueDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoCardDueDate.ForeColor = System.Drawing.Color.Azure
+        Me.lblInfoCardDueDate.Location = New System.Drawing.Point(42, 164)
+        Me.lblInfoCardDueDate.Name = "lblInfoCardDueDate"
+        Me.lblInfoCardDueDate.Size = New System.Drawing.Size(100, 25)
+        Me.lblInfoCardDueDate.TabIndex = 8
+        Me.lblInfoCardDueDate.Text = "Due Date:"
+        '
+        'lblInfoCardDescription
+        '
+        Me.lblInfoCardDescription.AutoSize = True
+        Me.lblInfoCardDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoCardDescription.ForeColor = System.Drawing.Color.Azure
+        Me.lblInfoCardDescription.Location = New System.Drawing.Point(41, 232)
+        Me.lblInfoCardDescription.Name = "lblInfoCardDescription"
+        Me.lblInfoCardDescription.Size = New System.Drawing.Size(109, 25)
+        Me.lblInfoCardDescription.TabIndex = 8
+        Me.lblInfoCardDescription.Text = "Description"
+        '
+        'lblInfoCardUrgency
+        '
+        Me.lblInfoCardUrgency.AutoSize = True
+        Me.lblInfoCardUrgency.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoCardUrgency.ForeColor = System.Drawing.Color.Azure
+        Me.lblInfoCardUrgency.Location = New System.Drawing.Point(42, 486)
+        Me.lblInfoCardUrgency.Name = "lblInfoCardUrgency"
+        Me.lblInfoCardUrgency.Size = New System.Drawing.Size(133, 25)
+        Me.lblInfoCardUrgency.TabIndex = 8
+        Me.lblInfoCardUrgency.Text = "Card Urgency"
+        '
+        'grpNotices
+        '
+        Me.grpNotices.Location = New System.Drawing.Point(371, 85)
+        Me.grpNotices.Name = "grpNotices"
+        Me.grpNotices.Size = New System.Drawing.Size(240, 673)
+        Me.grpNotices.TabIndex = 1
+        Me.grpNotices.TabStop = False
+        '
+        'grpToDo
+        '
+        Me.grpToDo.Location = New System.Drawing.Point(617, 85)
+        Me.grpToDo.Name = "grpToDo"
+        Me.grpToDo.Size = New System.Drawing.Size(240, 673)
+        Me.grpToDo.TabIndex = 2
+        Me.grpToDo.TabStop = False
+        '
+        'grpInProgress
+        '
+        Me.grpInProgress.Location = New System.Drawing.Point(863, 85)
+        Me.grpInProgress.Name = "grpInProgress"
+        Me.grpInProgress.Size = New System.Drawing.Size(240, 673)
+        Me.grpInProgress.TabIndex = 2
+        Me.grpInProgress.TabStop = False
+        '
+        'grpDone
+        '
+        Me.grpDone.Location = New System.Drawing.Point(1109, 85)
+        Me.grpDone.Name = "grpDone"
+        Me.grpDone.Size = New System.Drawing.Size(240, 673)
+        Me.grpDone.TabIndex = 2
+        Me.grpDone.TabStop = False
+        '
+        'lblInfoNotices
+        '
+        Me.lblInfoNotices.AutoSize = True
+        Me.lblInfoNotices.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoNotices.ForeColor = System.Drawing.Color.Azure
+        Me.lblInfoNotices.Location = New System.Drawing.Point(366, 57)
+        Me.lblInfoNotices.Name = "lblInfoNotices"
+        Me.lblInfoNotices.Size = New System.Drawing.Size(83, 25)
+        Me.lblInfoNotices.TabIndex = 9
+        Me.lblInfoNotices.Text = "Notices:"
+        '
+        'lblInfoToDo
+        '
+        Me.lblInfoToDo.AutoSize = True
+        Me.lblInfoToDo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoToDo.ForeColor = System.Drawing.Color.Azure
+        Me.lblInfoToDo.Location = New System.Drawing.Point(612, 57)
+        Me.lblInfoToDo.Name = "lblInfoToDo"
+        Me.lblInfoToDo.Size = New System.Drawing.Size(69, 25)
+        Me.lblInfoToDo.TabIndex = 10
+        Me.lblInfoToDo.Text = "To do:"
+        '
+        'lblInfoInProgress
+        '
+        Me.lblInfoInProgress.AutoSize = True
+        Me.lblInfoInProgress.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoInProgress.ForeColor = System.Drawing.Color.Azure
+        Me.lblInfoInProgress.Location = New System.Drawing.Point(858, 57)
+        Me.lblInfoInProgress.Name = "lblInfoInProgress"
+        Me.lblInfoInProgress.Size = New System.Drawing.Size(117, 25)
+        Me.lblInfoInProgress.TabIndex = 11
+        Me.lblInfoInProgress.Text = "In Progress:"
+        '
+        'lblInfoDone
+        '
+        Me.lblInfoDone.AutoSize = True
+        Me.lblInfoDone.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblInfoDone.ForeColor = System.Drawing.Color.Azure
+        Me.lblInfoDone.Location = New System.Drawing.Point(1104, 57)
+        Me.lblInfoDone.Name = "lblInfoDone"
+        Me.lblInfoDone.Size = New System.Drawing.Size(65, 25)
+        Me.lblInfoDone.TabIndex = 12
+        Me.lblInfoDone.Text = "Done:"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1360, 770)
+        Me.Controls.Add(Me.lblInfoDone)
+        Me.Controls.Add(Me.lblInfoInProgress)
+        Me.Controls.Add(Me.lblInfoToDo)
+        Me.Controls.Add(Me.lblInfoNotices)
+        Me.Controls.Add(Me.grpDone)
+        Me.Controls.Add(Me.grpInProgress)
+        Me.Controls.Add(Me.grpToDo)
+        Me.Controls.Add(Me.grpNotices)
         Me.Controls.Add(Me.grpCardCreate)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -178,6 +322,7 @@ Partial Class frmMain
         Me.grpCardCreationUrgency.ResumeLayout(False)
         Me.grpCardCreationUrgency.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -192,4 +337,16 @@ Partial Class frmMain
     Friend WithEvents rbtUrgency1 As RadioButton
     Friend WithEvents rbtUrgency0 As RadioButton
     Friend WithEvents btnCreateCardSubmit As Button
+    Friend WithEvents lblInfoCardName As Label
+    Friend WithEvents lblInfoCardUrgency As Label
+    Friend WithEvents lblInfoCardDescription As Label
+    Friend WithEvents lblInfoCardDueDate As Label
+    Friend WithEvents grpNotices As GroupBox
+    Friend WithEvents grpToDo As GroupBox
+    Friend WithEvents grpInProgress As GroupBox
+    Friend WithEvents grpDone As GroupBox
+    Friend WithEvents lblInfoNotices As Label
+    Friend WithEvents lblInfoToDo As Label
+    Friend WithEvents lblInfoInProgress As Label
+    Friend WithEvents lblInfoDone As Label
 End Class
