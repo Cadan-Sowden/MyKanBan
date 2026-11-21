@@ -45,6 +45,14 @@
             End If
 
             createCard(txtCardTitle.Text, txtCardContent.Text, dtpCardDueDate.Value, urgency, completion)
+
+            txtCardTitle.Text = ""
+            dtpCardDueDate.Value = Date.Today
+            txtCardContent.Text = ""
+            rbtUrgency0.Checked = False
+            rbtUrgency1.Checked = False
+            rbtUrgency2.Checked = False
+            rbtUrgency3.Checked = False
         End If
     End Sub
 
@@ -53,20 +61,91 @@
         Dim newCard As New Cards(title, description, dueDate, urgency, completion)
         Dim targetBox As GroupBox = If(urgency = 0, grpNotices, grpToDo)
         targetBox.Controls.Add(newCard)
+        stackAll()
     End Sub
     Public Sub deleteCard(ByVal title As String, ByVal dueDate As DateTime)
         ' Subprogram to delete a card with the provided title and due date
     End Sub
+    Public Sub writeToJSON(ByVal title As String, ByVal description As String, ByVal dueDate As DateTime, ByVal urgency As Integer, ByVal completion As Integer)
 
+    End Sub
+    Public Sub readFromJSON()
+
+    End Sub
+    Public Sub detectCreateJSON()
+
+    End Sub
+    Public Sub populateCards()
+
+    End Sub
+    Public Sub UpdateUrgency()
+
+        For Each group As GroupBox In {
+        grpToDo,
+        grpInProgress
+    }
+
+            For Each ctrl As Control In group.Controls
+
+                If TypeOf ctrl Is Cards Then
+
+                    Dim card As Cards = DirectCast(ctrl, Cards)
+
+                    Dim daysRemaining As Integer =
+                    (card.dueDate.Date - Date.Today).Days
+
+                    If daysRemaining <= 2 Then
+                        card.urgency = 3
+                    ElseIf daysRemaining <= 5 Then
+                        card.urgency = 2
+                    ElseIf daysRemaining <= 7 Then
+                        card.urgency = 1
+                    Else
+                        card.urgency = 0
+                    End If
+
+                    card.updateColour(urgency)
+
+                End If
+
+            Next
+        Next
+
+    End Sub
+    Public Sub stackCards(group As GroupBox)
+        Dim cards = group.Controls.OfType(Of Cards)().ToList()
+        Dim posStart As Integer = 10
+        Dim posSpacing As Integer = 65
+        Dim cardLength As Integer = 300
+        Dim cardYPos As Integer
+
+        For count = 0 To cards.Count - 1
+            If count = 0 Then
+                cardYPos = 0
+            ElseIf count = 1 Then
+                cardYPos = 300
+            Else
+                cardYPos = cardLength + (count - 1) * posSpacing
+            End If
+            cards(count).Location = New Point(0, cardYPos)
+            cards(count).BringToFront()
+        Next
+    End Sub
+    Public Sub stackAll()
+        stackCards(grpNotices)
+        stackCards(grpToDo)
+        stackCards(grpInProgress)
+        stackCards(grpDone)
+    End Sub
 End Class
 
 Public Class Cards
     Inherits Panel
-    Public title As String
-    Public description As String
-    Public dueDate As Date
-    Public urgency As Integer
-    Public completion As Integer
+    Public Property title As String
+    Public Property description As String
+    Public Property dueDate As Date
+    Public Property urgency As Integer
+    Public Property completion As Integer
     Public Sub New(ByVal title As String, ByVal description As String, ByVal dueDate As Date, ByVal urgency As Integer, ByVal completion As Integer)
         Me.Size = New Size(250, 300)
         Me.title = title
@@ -74,15 +153,7 @@ Public Class Cards
         Me.dueDate = dueDate
         Me.urgency = urgency
         Me.completion = completion
-        If urgency = 0 Then
-            Me.BackColor = Color.MediumTurquoise
-        ElseIf urgency = 1 Then
-            Me.BackColor = Color.LightGreen
-        ElseIf urgency = 2 Then
-            Me.BackColor = Color.FromArgb(253, 253, 150)
-        ElseIf urgency = 3 Then
-            Me.BackColor = Color.Tomato
-        End If
+        updateColour(urgency)
 
         Dim lblTitle As New Label()
         lblTitle.Location = New Point(10, 10)
@@ -107,5 +178,16 @@ Public Class Cards
         lblDueDate.Text = "Due " & Format(dueDate, "Short Date")
         Me.Controls.Add(lblDueDate)
 
+    End Sub
+    Public Sub updateColour(urgency)
+        If urgency = 0 Then
+            Me.BackColor = Color.MediumTurquoise
+        ElseIf urgency = 1 Then
+            Me.BackColor = Color.LightGreen
+        ElseIf urgency = 2 Then
+            Me.BackColor = Color.FromArgb(253, 253, 150)
+        ElseIf urgency = 3 Then
+            Me.BackColor = Color.Tomato
+        End If
     End Sub
 End Class
