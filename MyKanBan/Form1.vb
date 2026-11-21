@@ -57,16 +57,17 @@
     Public Sub deleteCard(ByVal title As String, ByVal dueDate As DateTime)
         ' Subprogram to delete a card with the provided title and due date
     End Sub
+
 End Class
 
 Public Class Cards
     Inherits Panel
     Public title As String
     Public description As String
-    Public dueDate As DateTime
+    Public dueDate As Date
     Public urgency As Integer
     Public completion As Integer
-    Public Sub New(ByVal title As String, ByVal description As String, ByVal dueDate As DateTime, ByVal urgency As Integer, ByVal completion As Integer)
+    Public Sub New(ByVal title As String, ByVal description As String, ByVal dueDate As Date, ByVal urgency As Integer, ByVal completion As Integer)
         Me.Size = New Size(250, 300)
         Me.title = title
         Me.description = description
@@ -81,13 +82,30 @@ Public Class Cards
             Me.BackColor = Color.FromArgb(253, 253, 150)
         ElseIf urgency = 3 Then
             Me.BackColor = Color.Tomato
-
-
-
-
-
-
-
         End If
+
+        Dim lblTitle As New Label()
+        lblTitle.Location = New Point(10, 10)
+        lblTitle.Font = New Font("Consolas Code", 14, FontStyle.Bold)
+        lblTitle.Text = title
+        lblTitle.Size = New Size(230, 60)
+        lblTitle.AutoEllipsis = True
+        Me.Controls.Add(lblTitle)
+
+        Dim lblDescription As New Label()
+        lblDescription.Location = New Point(10, 80)
+        lblDescription.Size = New Size(230, 150)
+        lblDescription.Text = description
+        lblDescription.AutoEllipsis = True
+        lblDescription.Font = New Font("Consolas Code", 12)
+        Me.Controls.Add(lblDescription)
+
+        Dim lblDueDate As New Label()
+        lblDueDate.Location = New Point(10, 250)
+        lblDueDate.Font = New Font("Consolas Code", 12)
+        lblDueDate.AutoSize = True
+        lblDueDate.Text = "Due " & Format(dueDate, "Short Date")
+        Me.Controls.Add(lblDueDate)
+
     End Sub
 End Class
