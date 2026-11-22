@@ -222,6 +222,7 @@ Partial Class frmMain
         '
         'grpNotices
         '
+        Me.grpNotices.BackColor = System.Drawing.Color.DimGray
         Me.grpNotices.Location = New System.Drawing.Point(371, 85)
         Me.grpNotices.Name = "grpNotices"
         Me.grpNotices.Size = New System.Drawing.Size(240, 673)
@@ -230,6 +231,7 @@ Partial Class frmMain
         '
         'grpToDo
         '
+        Me.grpToDo.BackColor = System.Drawing.Color.DimGray
         Me.grpToDo.Location = New System.Drawing.Point(617, 85)
         Me.grpToDo.Name = "grpToDo"
         Me.grpToDo.Size = New System.Drawing.Size(240, 673)
@@ -238,6 +240,7 @@ Partial Class frmMain
         '
         'grpInProgress
         '
+        Me.grpInProgress.BackColor = System.Drawing.Color.DimGray
         Me.grpInProgress.Location = New System.Drawing.Point(863, 85)
         Me.grpInProgress.Name = "grpInProgress"
         Me.grpInProgress.Size = New System.Drawing.Size(240, 673)
@@ -246,6 +249,7 @@ Partial Class frmMain
         '
         'grpDone
         '
+        Me.grpDone.BackColor = System.Drawing.Color.DimGray
         Me.grpDone.Location = New System.Drawing.Point(1109, 85)
         Me.grpDone.Name = "grpDone"
         Me.grpDone.Size = New System.Drawing.Size(240, 673)

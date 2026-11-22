@@ -63,6 +63,18 @@
         targetBox.Controls.Add(newCard)
         stackAll()
     End Sub
+    Public Sub orderCards(ByVal title As String, ByVal dueDate As DateTime) 'NEEDS MUCH WORK
+        For Each group As GroupBox In {grpNotices, grpToDo, grpInProgress, grpDone}
+            Dim arrSize As Integer
+            arrSize = Controls.Count()
+            Dim cardsList(arrSize)
+            For count = 0 To arrSize - 1
+                cardsList(count) = dueDate
+
+            Next
+        Next
+
+    End Sub
     Public Sub deleteCard(ByVal title As String, ByVal dueDate As DateTime)
         ' Subprogram to delete a card with the provided title and due date
     End Sub
@@ -104,7 +116,7 @@
                         card.urgency = 0
                     End If
 
-                    card.updateColour(urgency)
+                    card.updateColour(card.urgency)
 
                 End If
 
@@ -116,7 +128,7 @@
         Dim cards = group.Controls.OfType(Of Cards)().ToList()
         Dim posStart As Integer = 10
         Dim posSpacing As Integer = 65
-        Dim cardLength As Integer = 300
+        Dim cardLength As Integer = 310
         Dim cardYPos As Integer
 
         For count = 0 To cards.Count - 1
@@ -141,13 +153,16 @@ End Class
 
 Public Class Cards
     Inherits Panel
+
     Public Property title As String
     Public Property description As String
     Public Property dueDate As Date
     Public Property urgency As Integer
     Public Property completion As Integer
+    Private borderColor As Color = Color.Black
+    Private borderWidth As Integer = 4
     Public Sub New(ByVal title As String, ByVal description As String, ByVal dueDate As Date, ByVal urgency As Integer, ByVal completion As Integer)
-        Me.Size = New Size(250, 300)
+        Me.Size = New Size(240, 300)
         Me.title = title
         Me.description = description
         Me.dueDate = dueDate
@@ -155,17 +170,18 @@ Public Class Cards
         Me.completion = completion
         updateColour(urgency)
 
+
         Dim lblTitle As New Label()
         lblTitle.Location = New Point(10, 10)
         lblTitle.Font = New Font("Consolas Code", 14, FontStyle.Bold)
         lblTitle.Text = title
-        lblTitle.Size = New Size(230, 60)
+        lblTitle.Size = New Size(200, 60)
         lblTitle.AutoEllipsis = True
         Me.Controls.Add(lblTitle)
 
         Dim lblDescription As New Label()
         lblDescription.Location = New Point(10, 80)
-        lblDescription.Size = New Size(230, 150)
+        lblDescription.Size = New Size(200, 150)
         lblDescription.Text = description
         lblDescription.AutoEllipsis = True
         lblDescription.Font = New Font("Consolas Code", 12)
@@ -182,12 +198,27 @@ Public Class Cards
     Public Sub updateColour(urgency)
         If urgency = 0 Then
             Me.BackColor = Color.MediumTurquoise
+            borderColor = Color.Teal
         ElseIf urgency = 1 Then
             Me.BackColor = Color.LightGreen
+            borderColor = Color.ForestGreen
         ElseIf urgency = 2 Then
             Me.BackColor = Color.FromArgb(253, 253, 150)
+            borderColor = Color.Goldenrod
         ElseIf urgency = 3 Then
             Me.BackColor = Color.Tomato
+            borderColor = Color.DarkRed
         End If
+        Me.Invalidate()
     End Sub
+    Protected Overrides Sub OnPaint(e As PaintEventArgs)
+        MyBase.OnPaint(e)
+
+        Using p As New Pen(borderColor, borderWidth)
+            ' Inset the rectangle by half the pen width so all 4 edges appear evenly
+            Dim rect As New Rectangle(borderWidth \ 2, borderWidth \ 2, Me.Width - borderWidth, Me.Height - borderWidth)
+            e.Graphics.DrawRectangle(p, rect)
+        End Using
+    End Sub
+
 End Class
