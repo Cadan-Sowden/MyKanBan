@@ -22,6 +22,7 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.grpCardCreate = New System.Windows.Forms.GroupBox()
         Me.lblInfoCardUrgency = New System.Windows.Forms.Label()
         Me.lblInfoCardDescription = New System.Windows.Forms.Label()
@@ -317,6 +318,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.grpCardCreate)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(-25, 125)
         Me.MaximizeBox = False
         Me.Name = "frmMain"

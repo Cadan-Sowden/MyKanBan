@@ -1,4 +1,9 @@
-﻿Public Class frmMain
+﻿Imports System.ComponentModel
+Imports System.Runtime.CompilerServices
+Imports System.Security.Cryptography.X509Certificates
+Imports System.Text.RegularExpressions
+
+Public Class frmMain
     Dim urgency As Integer
     Private Sub Form1_Load(sender As Object, k As EventArgs) Handles MyBase.Load
         dtpCardDueDate.MinDate = DateTime.Today
@@ -54,6 +59,9 @@
             rbtUrgency2.Checked = False
             rbtUrgency3.Checked = False
         End If
+
+        orderCards()
+
     End Sub
 
     Public Sub createCard(ByVal title As String, ByVal description As String, ByVal dueDate As DateTime, ByVal urgency As Integer, ByVal completion As Integer)
@@ -63,16 +71,26 @@
         targetBox.Controls.Add(newCard)
         stackAll()
     End Sub
-    Public Sub orderCards(ByVal title As String, ByVal dueDate As DateTime) 'NEEDS MUCH WORK
-        For Each group As GroupBox In {grpNotices, grpToDo, grpInProgress, grpDone}
-            Dim arrSize As Integer
-            arrSize = Controls.Count()
-            Dim cardsList(arrSize)
-            For count = 0 To arrSize - 1
-                cardsList(count) = dueDate
 
-            Next
-        Next
+    Public Sub orderCards(ByVal cardsOrderedList As Cards, ByVal arrSize As Integer)
+        Dim swaps As Boolean
+        Dim temp As Cards
+        Dim cardsList(arrSize) As Cards
+        swaps = True
+        While swaps <> False
+            swaps = False
+            For count = 0 To arrSize - 1 'Bubble sort go here at some point trusttt
+                If cardsList(count).dueDate > cardsList(count + 1).dueDate Then
+                    temp = cardsList(count + 1)
+                    cardsList(count + 1) = cardsList(count)
+                    cardsList(count) = temp
+                    swaps = True
+                End If
+            Next count
+
+        End While
+
+
 
     End Sub
     Public Sub deleteCard(ByVal title As String, ByVal dueDate As DateTime)
@@ -124,7 +142,7 @@
         Next
 
     End Sub
-    Public Sub stackCards(group As GroupBox)
+    Public Sub stackCards(group As GroupBox, ByVal cardsList As Cards)
         Dim cards = group.Controls.OfType(Of Cards)().ToList()
         Dim posStart As Integer = 10
         Dim posSpacing As Integer = 65
@@ -144,12 +162,26 @@
         Next
     End Sub
     Public Sub stackAll()
-        stackCards(grpNotices)
-        stackCards(grpToDo)
+        stackCards(grpNotices, )
+        stackCards(grpToDo, 0)
         stackCards(grpInProgress)
         stackCards(grpDone)
     End Sub
+    Public Sub createCardsList() 'NEEDS MUCH WORK
+        For Each group As GroupBox In {grpNotices, grpToDo, grpInProgress, grpDone}
+            Dim arrSize As Integer = group.Controls.OfType(Of Cards)().Count()
+            Dim cardsList(arrSize - 1) As Cards
+            Dim count As Integer = 0
+            For Each ctrl As Control In group.Controls
+                If TypeOf ctrl Is Cards Then
+                    cardsList(count) = DirectCast(ctrl, Cards)
+                End If
+                Return cardsList
+            Next
+        Next
+    End Sub
 End Class
+
 
 Public Class Cards
     Inherits Panel
