@@ -60,7 +60,7 @@ Public Class frmMain
             rbtUrgency3.Checked = False
         End If
 
-        orderCards()
+        'orderCards()
 
     End Sub
 
@@ -162,10 +162,10 @@ Public Class frmMain
         Next
     End Sub
     Public Sub stackAll()
-        stackCards(grpNotices, )
-        stackCards(grpToDo, 0)
-        stackCards(grpInProgress)
-        stackCards(grpDone)
+        'stackCards(grpNotices)
+        'stackCards(grpToDo)
+        'stackCards(grpInProgress)
+        'stackCards(grpDone)
     End Sub
     Public Sub createCardsList() 'NEEDS MUCH WORK
         For Each group As GroupBox In {grpNotices, grpToDo, grpInProgress, grpDone}
@@ -176,9 +176,18 @@ Public Class frmMain
                 If TypeOf ctrl Is Cards Then
                     cardsList(count) = DirectCast(ctrl, Cards)
                 End If
-                Return cardsList
+
             Next
         Next
+    End Sub
+
+    Private Sub TESTbtn_Click(sender As Object, e As EventArgs) Handles TESTbtn.Click
+        For Each group As GroupBox In {grpNotices, grpToDo, grpInProgress, grpDone}
+            For Each ctrl As Control In group.Controls
+                group.Controls.Clear()
+
+            Next
+        Next group
     End Sub
 End Class
 

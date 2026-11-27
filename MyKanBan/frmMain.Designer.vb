@@ -46,6 +46,7 @@ Partial Class frmMain
         Me.lblInfoToDo = New System.Windows.Forms.Label()
         Me.lblInfoInProgress = New System.Windows.Forms.Label()
         Me.lblInfoDone = New System.Windows.Forms.Label()
+        Me.TESTbtn = New System.Windows.Forms.Button()
         Me.grpCardCreate.SuspendLayout()
         Me.grpCardCreationUrgency.SuspendLayout()
         Me.SuspendLayout()
@@ -301,12 +302,22 @@ Partial Class frmMain
         Me.lblInfoDone.TabIndex = 12
         Me.lblInfoDone.Text = "Done:"
         '
+        'TESTbtn
+        '
+        Me.TESTbtn.Location = New System.Drawing.Point(497, 24)
+        Me.TESTbtn.Name = "TESTbtn"
+        Me.TESTbtn.Size = New System.Drawing.Size(75, 23)
+        Me.TESTbtn.TabIndex = 13
+        Me.TESTbtn.Text = "TEST DE"
+        Me.TESTbtn.UseVisualStyleBackColor = True
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(1360, 770)
+        Me.Controls.Add(Me.TESTbtn)
         Me.Controls.Add(Me.lblInfoDone)
         Me.Controls.Add(Me.lblInfoInProgress)
         Me.Controls.Add(Me.lblInfoToDo)
@@ -355,4 +366,5 @@ Partial Class frmMain
     Friend WithEvents lblInfoToDo As Label
     Friend WithEvents lblInfoInProgress As Label
     Friend WithEvents lblInfoDone As Label
+    Friend WithEvents TESTbtn As Button
 End Class
